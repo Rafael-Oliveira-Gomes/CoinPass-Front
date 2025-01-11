@@ -87,10 +87,21 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+
+            "fileReplacements": [
+              {
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }
+            ]
+
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "7b943098-87ad-48c3-a949-fdd2d70e8460"
   }
 }
