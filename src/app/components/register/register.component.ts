@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
 
 @Component({
@@ -10,15 +11,23 @@ import { AuthService } from '../../auth/auth.service';
   imports: [CommonModule, FormsModule]
 })
 export class RegisterComponent {
-  signUpData = { email: '', password: '' };
+  signUpData = { username: '', email: '', password: '', passwordConfirm: '' };
+  successMessage: string = '';
+  errorMessage: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
     this.authService.signUp(this.signUpData).subscribe(response => {
-      console.log('Registro bem-sucedido!', response);
+      this.successMessage = 'Cadastro salvo com sucesso!';
+      this.errorMessage = '';
     }, error => {
-      console.error('Erro no registro', error);
+      this.errorMessage = 'Erro no cadastro: ' + error.message;
+      this.successMessage = '';
     });
+  }
+
+  navigateToLogin() {
+    this.router.navigate(['/login']);
   }
 }

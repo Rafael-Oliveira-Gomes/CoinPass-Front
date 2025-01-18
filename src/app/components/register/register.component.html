@@ -1,12 +1,32 @@
-<form (submit)="onSubmit()">
-    <div>
-      <label for="email">Email:</label>
-      <input type="email" [(ngModel)]="signUpData.email" name="email" required>
-    </div>
-    <div>
-      <label for="password">Senha:</label>
-      <input type="password" [(ngModel)]="signUpData.password" name="password" required>
-    </div>
-    <button type="submit">Registrar</button>
-  </form>
-  
+<h2>Registro</h2>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" [(ngModel)]="signUpData.username" name="username" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" [(ngModel)]="signUpData.email" name="email" required>
+  </div>
+  <div>
+    <label for="password">Senha:</label>
+    <input type="password" [(ngModel)]="signUpData.password" name="password" required>
+  </div>
+  <div>
+    <label for="passwordConfirm">Confirmar Senha:</label>
+    <input type="password" [(ngModel)]="signUpData.passwordConfirm" name="passwordConfirm" required>
+  </div>
+  <button type="submit">Registrar</button>
+</form>
+
+<!-- Mensagem de Sucesso -->
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>
+
+<!-- Mensagem de Erro -->
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
+
+<p>Já tem uma conta? <button (click)="navigateToLogin()">Faça login aqui</button></p>

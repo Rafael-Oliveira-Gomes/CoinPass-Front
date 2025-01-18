@@ -1,0 +1,26 @@
+<h2>Criar Conta</h2>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="tipoConta">Tipo de Conta:</label>
+    <input type="text" [(ngModel)]="accountData.tipoConta" name="tipoConta" required>
+  </div>
+  <div>
+    <label for="saldo">Saldo:</label>
+    <input type="number" [(ngModel)]="accountData.saldo" name="saldo" required>
+  </div>
+  <div>
+    <label for="nomeBanco">Nome do Banco:</label>
+    <input type="text" [(ngModel)]="accountData.nomeBanco" name="nomeBanco" required>
+  </div>
+  <button type="submit">Criar Conta</button>
+</form>
+
+<!-- Mensagem de Sucesso -->
+<div *ngIf="successMessage" class="success-message">
+  {{ successMessage }}
+</div>
+
+<!-- Mensagem de Erro -->
+<div *ngIf="errorMessage" class="error-message">
+  {{ errorMessage }}
+</div>
